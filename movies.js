@@ -6,6 +6,10 @@
 
 
     //display loading
+    //selecting dom elements
+    const textInput = $('#inputPart')
+
+
 
 
     //post request TODO needs cleaning
