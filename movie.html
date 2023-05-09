@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/96cf41118b.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="movies.css">
     <title>Movie App</title>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Cinema Chateau/Flicks Fortress/Screen Stronghold</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,17 +22,18 @@
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Find out More Here</a>
+                    <a class="nav-link" href="#">Find out More Here<i class="fa-brands fa-imdb fa-xl" style="color: #d7d014;"></i></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Customize List
+                        Customize Movie List
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Add Movie</a></li>
-                        <li><a class="dropdown-item" href="#">Delete Movie</a></li>
+                        <li><a class="dropdown-item" href="#">Add Movie<i class="fa-solid fa-plus"></i></a></li>
+                        <li><a class="dropdown-item" href="#">Remove Movie<i class="fa-solid fa-eraser"></i></a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-ticket-alt"></i> Buy Tickets</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-film"></i> View Trailers</a></li>
                     </ul>
                 </li>
             </ul>
@@ -43,6 +45,40 @@
     </div>
 </nav>
 
+<nav class="navbar navbar-expand-lg navbar-dark bg-light" style="background-color: #d32f2f; background-image: linear-gradient(45deg, #d32f2f, #fbc02d);">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#" style="color: #fbc02d;">Cinema Chateau</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#" style="color: #fbc02d;">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.imdb.com/?ref_=nv_home" style="color: #fbc02d;">Find out More Here<i class="fa-brands fa-imdb fa-2xl" style="color: #fbc02d;"></i></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #fbc02d;">
+                        Customize Movie List
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #d32f2f; background-image: linear-gradient(-45deg, #d32f2f, #fbc02d);>
+                        <li><a class="dropdown-item" href="#" style="color: #d32f2f;"><i class="fas fa-plus" style="color: #d32f2f;"></i> Add Movie</a></li>
+                        <li><a class="dropdown-item" href="#" style="color: #d32f2f;"><i class="fas fa-eraser" style="color: #d32f2f;"></i> Remove Movie</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#" style="color: #d32f2f;"><i class="fas fa-ticket-alt" style="color: #d32f2f;"></i> Buy Tickets</a></li>
+                        <li><a class="dropdown-item" href="#" style="color: #d32f2f;"><i class="fas fa-film" style="color: #d32f2f;"></i> View Trailers</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-warning" type="submit" style="border-color: #d32f2f; color: #d32f2f;">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
 
 
 <!--Show loading-->
