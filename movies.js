@@ -37,9 +37,9 @@
         displayLoading()
         const moviesResponse = await fetch(movieUrl)
         const moviesJSON = await moviesResponse.json()
+        await createMovieCards(moviesJSON)
         hideLoading()
         console.log(moviesJSON)
-        createMovieCards(moviesJSON)
     }
 
     const createMovieCards = async arr => {
@@ -52,6 +52,7 @@
             // console.log(movieImg)
 
             return markup += `
+
             <div class="card col col-md-6 col-lg-6 col-xl-4" id="grad2">
             <div class="top-holder d-flex flex-column align-items-center ">
                 <p class="title"><h1><u>${movieDB.Title}</u></h1></p>
@@ -64,6 +65,7 @@
                     <p class="director">Director: ${movieDB.Director}</p>
                     <hr>
                     <p class="synopsis">Synospis: ${movieDB.Plot}</p>
+
                 </div>
             </div>
             </div>
@@ -71,7 +73,6 @@
             `
         })
         await Promise.all(newArr)
-
         $('.container').html(markup)
     }
 
@@ -97,6 +98,21 @@
 
     // postMovie({title: 'godzilla', genre: 'munster movei'})
 
+    // show modal on click
+    $('.add-movie').on('click', () => {
+        console.log('clicked')
+        //triggering hidden modal button
+        $('.add-movie-modal-btn').trigger('click')
+    })
+
+    $('.addBtn').on('click', () => {
+        const movieObj = {title: $('#movie-title').val(), rating:  $('#movie-rating').val()}
+        postMovie(movieObj)
+        $('#movie-rating').val("")
+        $('#movie-title').val("")
+    })
+
+
 
     // **************************** //
     //Delete request
@@ -108,15 +124,25 @@
         },
     };
     const deleteMovie = e => {
-        console.log(e.target.id);
-        const id = e.target.id
-        fetch(`https://mysterious-flat-dawn.glitch.me/movies/${id}`, deleteOptions).then(res => {
-            fetchHandler()
-        })
-            .catch(/* handle errors */);
+        if(e.target.classList.contains('deleteBtn')) {
+            e.preventDefault()
+            const confirmed = confirm('Are you sure you want to delete this movie?')
+            if (confirmed) {
+                console.log('clicked')
+                console.log(e.target.id);
+                const id = e.target.id
+                fetch(`https://mysterious-flat-dawn.glitch.me/movies/${id}`, deleteOptions).then(res => {
+                    fetchHandler()
+
+                })
+                    .catch(/* handle errors */);
+            }
+
+        }
+
     }
 
-    $('.deleteBtn').on('click', deleteMovie)
+    $('.container').on('click', deleteMovie)
 
     // **************************** //
     //Patch request
@@ -136,7 +162,17 @@
             .catch(/* handle errors */);
     }
 
-    // patchMovie({title: 'Godzilla', genre: 'monster movie'}, 9)
+    const editMovie = e => {
+        e.preventDefault()
+        if (e.target.classList.contains('editBtn')) {
+            console.log('clicked')
+
+
+        }
+    }
+
+    $('.container').on('click', editMovie)
+
 
     // **************************** //
     //OMDB fetch
@@ -145,7 +181,6 @@
         const urlString = `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&t=${title}`
         const response = await fetch(urlString)
         const movieInfo = await response.json()
-        console.log(movieInfo)
         return movieInfo
     }
 
@@ -159,6 +194,8 @@
 
 
     fetchHandler()
+
+
 
 })()
 
