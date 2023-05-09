@@ -8,10 +8,19 @@
     margin: auto;
     display: none;
     animation: spin 1s infinite linear;
+
 }
 
 #loading.display {
     display: inline-block;
+}
+
+.add-movie-modal-btn {
+    display: none;
+}
+
+.card {
+    width: initial !important;
 }
 
 @keyframes spin {
