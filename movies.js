@@ -39,7 +39,16 @@
         const moviesJSON = await moviesResponse.json()
         hideLoading()
         console.log(moviesJSON)
+
         createMovieCards(moviesJSON)
+
+        const secondMovieTitle = moviesJSON[1].title; // get the title of the second movie object in the array
+        const secondMovieRating = moviesJSON[1].rating; // get the rating of the second movie object in the array
+
+        $('.card-title').text(secondMovieTitle); // set the text of the card title to the movie title
+        $('.card-rating').text(`Rating: ${secondMovieRating}`); // set the text of the card text to the movie rating
+
+
     }
 
     const createMovieCards = async arr => {
@@ -140,8 +149,14 @@
         const urlString = `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&t=${title}`
         const response = await fetch(urlString)
         const movieInfo = await response.json()
+
         console.log(movieInfo)
         return movieInfo.Poster
+
+        console.log(movieInfo.Poster)
+        $('.card').attr('src', PosterURL); // set poster
+
+
     }
 
     //Curriculum way
