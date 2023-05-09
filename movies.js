@@ -47,9 +47,6 @@
         // const movies = await fetchHandler()
         const newArr = arr.map(async movie => {
             const movieTitle = movie.title
-            const movieDirector = movie.director
-            const movieRating = movie.rating
-            const movieGenre = movie.genre
             const movieDB = await fetchDBTitle(movieTitle)
             console.log(movieDB)
             // console.log(movieImg)
@@ -57,14 +54,14 @@
             return markup += `
             <div class="card col col-md-6 col-lg-6 col-xl-4" id="grad2">
             <div class="top-holder d-flex flex-column align-items-center ">
-                <p class="title"><h1><u>${movieTitle}</u></h1></p>
+                <p class="title"><h1><u>${movieDB.Title}</u></h1></p>
                 <p class="rating"><i class="fa-sharp fa-solid fa-star"></i> Rating: ${movieDB.imdbRating}/10</p>
             </div>
-                <img src="${movieDB.Poster}" class="card-img-top" alt="${movieTitle}">
+                <img src="${movieDB.Poster}" class="card-img-top" alt="${movieDB.Title}">
                 <div class="card-body">
                     <p class="genre"><span class="badge rounded-pill bg-dark">${movieDB.Genre}</span></p>
                     <hr>
-                    <p class="director">Director: ${movieDirector}</p>
+                    <p class="director">Director: ${movieDB.Director}</p>
                     <hr>
                     <p class="synopsis">Synospis: ${movieDB.Plot}</p>
                 </div>
