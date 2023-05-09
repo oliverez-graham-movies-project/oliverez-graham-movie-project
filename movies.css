@@ -24,17 +24,17 @@
 }
 .genre{
     text-transform: capitalize;
-    color: white;
-}
-
-.top-holder{
-    color: white;
-}
-
-.director{
-    color: white;
 }
 
 #grad {
-    background-image: linear-gradient(to right, #1A2639, #1A2639, #3E4A61, #C24D2C, #1A2639, #1A2639);
+    background-image: linear-gradient(#E7622F, #ED872D, #6B6361, #3E4A61, #1A2639, #1A2639);
 }
+/*.card{*/
+/*    opacity: .5;*/
+/*}*/
+
+#D93934
+
+
+
+#876E58
