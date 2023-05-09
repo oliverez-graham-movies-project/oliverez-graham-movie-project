@@ -42,12 +42,6 @@
 
         createMovieCards(moviesJSON)
 
-        const secondMovieTitle = moviesJSON[1].title; // get the title of the second movie object in the array
-        const secondMovieRating = moviesJSON[1].rating; // get the rating of the second movie object in the array
-
-        $('.card-title').text(secondMovieTitle); // set the text of the card title to the movie title
-        $('.card-rating').text(`Rating: ${secondMovieRating}`); // set the text of the card text to the movie rating
-
 
     }
 
@@ -61,7 +55,6 @@
             const movieGenre = movie.genre
             const movieImg = await fetchDBTitle(movieTitle)
             console.log(movieImg)
-            // console.log(movieImg)
 
             return markup += `
             <div class="card" style="width: 18rem;">
