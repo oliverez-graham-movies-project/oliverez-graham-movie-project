@@ -22,3 +22,19 @@
         transform:rotate(360deg)
     }
 }
+.genre{
+    text-transform: capitalize;
+    color: white;
+}
+
+.top-holder{
+    color: white;
+}
+
+.director{
+    color: white;
+}
+
+#grad {
+    background-image: linear-gradient(to right, #1A2639, #1A2639, #3E4A61, #C24D2C, #1A2639, #1A2639);
+}

@@ -55,14 +55,21 @@
             // console.log(movieImg)
 
             return markup += `
-            <div class="card" style="width: 18rem;">
+            <div class="col col-md-6 col-lg-6 col-xl-4" id="grad2">
+           
+            <div class="top-holder">
+                <p class="title"><h3>${movieTitle}</h3></p>
+                <p class="rating">Rating: ${movieRating}/5</p>
+            </div>
                 <img src="${movieImg}" class="card-img-top" alt="${movieTitle}">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <p class="genre"><span class="badge rounded-pill bg-dark">${movieGenre}</span></p>
+                    <hr>
+                    <p class="director">Director: ${movieDirector}</p>
                 </div>
             </div>
+            </div>
+            <br>
             `
         })
         await Promise.all(newArr)
