@@ -65,6 +65,8 @@
                     <p class="director">Director: ${movieDB.Director}</p>
                     <hr>
                     <p class="synopsis">Synospis: ${movieDB.Plot}</p>
+                      <button type="button" class="btn btn-primary deleteBtn" id="${movie.id}">Delete</button>
+                    <button class="btn btn-primary editBtn">Edit</button>
 
                 </div>
             </div>
