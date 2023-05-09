@@ -39,14 +39,38 @@
         const moviesJSON = await moviesResponse.json()
         hideLoading()
         console.log(moviesJSON)
+        createMovieCards(moviesJSON)
     }
 
-    // const createMovieCards = arr => {
-    //     let markup = ''
-    //     arr.forEach(movie => {
-    //
-    //     })
-    // }
+    const createMovieCards = async arr => {
+        let markup = ''
+        // const movies = await fetchHandler()
+        const newArr = arr.map(async movie => {
+            const movieTitle = movie.title
+            const movieDirector = movie.director
+            const movieRating = movie.rating
+            const movieGenre = movie.genre
+            const movieImg = await fetchDBTitle(movieTitle)
+            console.log(movieImg)
+            // console.log(movieImg)
+
+            return markup += `
+            <div class="card" style="width: 18rem;">
+                <img src="${movieImg}" class="card-img-top" alt="${movieTitle}">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+            `
+        })
+        await Promise.all(newArr)
+
+        $('.container').html(markup)
+    }
+
+
 
 
     // **************************** //
@@ -59,7 +83,7 @@
             },
             body: JSON.stringify(obj),
         };
-        fetch(url, postOptions)
+        fetch(movieUrl, postOptions)
             .then(res => res.json()).then(json => {
             fetchHandler()
         })
@@ -107,7 +131,7 @@
             .catch(/* handle errors */);
     }
 
-    // patchMovie({title: 'The Big Lebowski', body: 'Jeff Bridges'}, 9)
+    // patchMovie({title: 'Godzilla', genre: 'monster movie'}, 9)
 
     // **************************** //
     //OMDB fetch
@@ -116,7 +140,8 @@
         const urlString = `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&t=${title}`
         const response = await fetch(urlString)
         const movieInfo = await response.json()
-        console.log(movieInfo.Poster)
+        console.log(movieInfo)
+        return movieInfo.Poster
     }
 
     //Curriculum way
@@ -125,7 +150,7 @@
     //     fetch(urlString).then(res => res.json()).then(json => console.log(json))
     // }
 
-    fetchDBTitle('fight club')
+    // fetchDBTitle('the big lebowski')
 
 
     fetchHandler()
