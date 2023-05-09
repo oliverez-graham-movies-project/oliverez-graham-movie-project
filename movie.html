@@ -47,19 +47,23 @@
 
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary add-movie-modal-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button type="button" class="btn btn-primary add-movie-modal-btn" data-bs-toggle="modal" data-bs-target="#addMovieModal">
+    show modal
+</button>
+
+<button type="button" class="btn btn-primary edit-movie-modal-btn" data-bs-toggle="modal" data-bs-target="#editMovieModal">
     show modal
 </button>
   
 <div id="grad" class="grad">
 
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Add Movie Modal -->
+<div class="modal fade" id="addMovieModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add a movie!</h5>
+                <h5 class="modal-title" id="addMovieLabel">Add a movie!</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -74,8 +78,6 @@
                         <input type="text" class="form-control" id="movie-rating">
                         <div id="ratingHelp" class="form-text">Add a rating between 1-10 (EX: 8.7 / 10)</div>
                     </div>
-
-<!--                    <button type="submit" class="btn btn-primary">Submit</button>-->
                 </form>
             </div>
             <div class="modal-footer">
@@ -87,7 +89,39 @@
     </div>
 </div>
 
-<!--Container to render cards-->
+    <!-- Edit Movie Modal -->
+    <div class="modal fade" id="editMovieModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editMovieLabel">Edit this Movie!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="movie-title" class="form-label">Edit Title</label>
+                            <input type="text" class="form-control" id="edit-movie-title" aria-describedby="emailHelp">
+                            <div id="editTitleHelp" class="form-text">Simply add a title and we do the rest!</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="movie-rating" class="form-label">Edit Rating</label>
+                            <input type="text" class="form-control" id="edit-movie-rating">
+                            <div id="editRatingHelp" class="form-text">Add a rating between 1-10 (EX: 8.7 / 10)</div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary editBtn-form" data-bs-dismiss="modal">Save changes</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!--Container to render cards-->
 <div class="container">
 <!--Loader Wheel container-->
     <div class="loader-wheel text-center">

@@ -1,3 +1,7 @@
+body {
+    height: 100vh;
+}
+
 #loading {
     width: 8rem;
     height: 8rem;
@@ -15,7 +19,7 @@
     display: inline-block;
 }
 
-.add-movie-modal-btn {
+.add-movie-modal-btn, .edit-movie-modal-btn {
     display: none;
 }
 
