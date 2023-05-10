@@ -15,7 +15,7 @@
     display: inline-block;
 }
 
-.add-movie-modal-btn {
+.add-movie-modal-btn, .edit-movie-modal-btn {
     display: none;
 }
 
@@ -63,11 +63,11 @@
     width: 100vw;
     max-width: 18rem;
     margin: auto;
-    background-image: linear-gradient(to top, #E7622F, #ED872D, #6B6361, #3E4A61, #1A2639, #1A2639);
-    color: skyblue;
+    /*background-image: linear-gradient(to top, #E7622F, #ED872D, #6B6361, #3E4A61, #1A2639, #1A2639);*/
+    /*color: skyblue;*/
     font-family: "Big Caslon", serif;
     font-size: 20px;
-    border-image: linear-gradient(#E7622F, #ED872D, #6B6361, #3E4A61, #1A2639, #1A2639)1;
+    /*border-image: linear-gradient(#E7622F, #ED872D, #6B6361, #3E4A61, #1A2639, #1A2639)1;*/
     border-width: 3px;
     border-style: solid;
     border-radius: 5px 5px 5px 5px;
@@ -89,7 +89,7 @@
     margin: 0 auto;
     background-color: #d32f2f;
     border-color: #d32f2f;
-    color: #fbc02d;
+    /*color: #fbc02d;*/
     font-size: 1.2rem;
     padding: 0.5rem 1rem;
 }
