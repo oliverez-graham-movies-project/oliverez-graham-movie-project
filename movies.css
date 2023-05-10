@@ -80,6 +80,7 @@
 }
 
 
+
 .card-img-top {
     height: auto;
     width: 90%;
@@ -138,7 +139,7 @@
 
 .modal-body input {
     background-color: #333;
-    color: #333;
+    color: #fbc02d;
     border-color: #fbc02d;
 }
 .modal-body input:focus{
