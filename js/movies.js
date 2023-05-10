@@ -44,10 +44,10 @@
             <div class="card col col-md-6 col-lg-6 col-xl-4 mt-3" id="grad2">
                 <div class="top-holder d-flex flex-column align-items-center ">
                 </div>
-                <p class="genre text-center"><span class="badge rounded-pill bg-dark">${movieDB.Genre}</span></p>
+                <p class="genre text-center"><span class="badge rounded-pill bg-white">${movieDB.Genre}</span></p>
                 <img src="${movieDB.Poster}" class="card-img-top" alt="${movieDB.Title}">
                 <div class="card-body">
-                <p class="rating"><i class="fa-sharp fa-solid fa-star"></i> Rating: ${movie.rating}/10</p>
+                <p class="rating d-flex justify-content-center"><i class="fa-sharp fa-solid fa-star"></i> Rating: ${movie.rating}/10</p>
                 
                 <hr>
                     

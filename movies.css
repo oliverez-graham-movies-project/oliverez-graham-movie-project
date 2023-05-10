@@ -1,7 +1,6 @@
 #loading {
     width: 8rem;
     height: 8rem;
-    background-color: white;
     /*border: 5px solid #f3f3f3;*/
     /*border-top: 6px solid #9c41f2;*/
     /*border-radius: 100%;*/
@@ -58,9 +57,9 @@
     text-transform: capitalize;
 }
 
-#grad {
-    background-image: linear-gradient(#E7622F, #ED872D, #6B6361, #3E4A61, #1A2639, #1A2639);
-}
+/*#grad {*/
+/*    background-image: linear-gradient(#E7622F, #ED872D, #6B6361, #3E4A61, #1A2639, #1A2639);*/
+/*}*/
 
 .card {
     /*width: 100vw;*/
@@ -74,6 +73,7 @@
     border-width: 3px;
     border-style: solid;
     border-radius: 5px 5px 5px 5px;
+    padding-top: .5em;
 }
 
 
@@ -145,6 +145,26 @@
 
 .form-text{
     color: #fbc02d;
+}
+
+
+body{
+    background: #E7622F;
+    background: linear-gradient(#E7622F, #ED872D, #6B6361, #3E4A61, #1A2639, #1A2639);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    /*background-attachment: fixed;*/
+}
+
+.card {
+    background-color: rgba(0,0,0,.5);
+    color: #fff;
+}
+
+.bg-white{
+    color: black;
 }
 
 p {
