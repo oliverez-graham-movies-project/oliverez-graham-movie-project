@@ -21,6 +21,35 @@
 
 .card {
     width: 18rem;
+    background-image: linear-gradient(to top, #E7622F, #ED872D, #6B6361, #3E4A61, #1A2639, #1A2639);
+    color: skyblue;
+    font-family: "Big Caslon", serif;
+    font-size: 20px;
+    border-image: linear-gradient(#E7622F, #ED872D, #6B6361, #3E4A61, #1A2639, #1A2639)1;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 5px 5px 5px 5px;
+}
+
+.navbar{
+    background-color: #d32f2f;
+    background-image: linear-gradient(45deg, #d32f2f, #fbc02d);
+}
+
+.navbar-brand{
+    font-family: "Brush Script MT", serif;
+    font-size: 40px;
+    color: #fbc02d
+}
+ .nav-link {
+     color: #fbc02d
+ }
+
+
+
+
+.dropdown-menu{
+    background-image: linear-gradient(-45deg, #d32f2f, #fbc02d);
 }
 
 @keyframes spin {
@@ -43,23 +72,29 @@
 /*}*/
 
 .card-img-top {
-    height: 20rem;
+    height: auto;
+    width: 90%;
     object-fit: cover;
+    display: block;
+    margin: auto;
+    border-radius: 10px 10px 10px 10px;
 }
 
-.card-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-}
+/*.card-title {*/
+/*    font-size: 1.5rem;*/
+/*    font-weight: bold;*/
+/*    margin-bottom: 0.5rem;*/
+/*}*/
 
-.card-text {
-    font-size: 1.2rem;
-    line-height: 1.5;
-    margin-bottom: 1rem;
-}
+
+/*.card-text {*/
+/*    font-size: 1.2rem;*/
+/*    line-height: 1.5;*/
+/*    margin-bottom: 1rem;*/
+/*}*/
 
 .btn-primary {
+    margin: 0 auto;
     background-color: #d32f2f;
     border-color: #d32f2f;
     color: #fbc02d;
@@ -71,4 +106,45 @@
     background-color: #fbc02d;
     border-color: #fbc02d;
     color: #d32f2f;
+}
+
+
+/*MODAL CSS*/
+.modal-content {
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+.modal-header {
+    border-bottom: none;
+}
+
+.modal-title {
+    color: #fbc02d;
+}
+
+.modal-body label {
+    color: #fff;
+}
+
+.modal-body input {
+    background-color: #333;
+    color: #fff;
+    border-color: #fbc02d;
+}
+
+.modal-footer button {
+    background-color: #fbc02d;
+    border-color: #fbc02d;
+    color: #1a1a1a;
+}
+
+.modal-footer button:hover {
+    background-color: #fff;
+    border-color: #fbc02d;
+    color: #1a1a1a;
+}
+
+.form-text{
+    color: #fbc02d;
 }

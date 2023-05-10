@@ -43,6 +43,7 @@
     }
 
     const createMovieCards = async arr => {
+        arr.sort((a, b) => a.title.localeCompare(b.title))//SORT THE ARRAY ALPHABETICALLY BASED ON MOVIE TITLE
         let markup = ''
         // const movies = await fetchHandler()
         const newArr = arr.map(async movie => {
