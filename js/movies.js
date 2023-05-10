@@ -44,7 +44,7 @@
             const movieTitle = movie.title
             const movieDB = await fetchDBTitle(movieTitle)
             return markup += `
-            <div class="card col col-md-6 col-lg-6 col-xl-4 mt-3" id="grad2">
+            <div class="card mt-3" id="grad2">
                 <div class="top-holder d-flex flex-column align-items-center ">
                 </div>
                 <p class="genre text-center"><span class="badge rounded-pill bg-white">${movieDB.Genre}</span></p>
@@ -95,10 +95,7 @@
     }
 
     // SHOW MODAL WHEN ADD MOVIE IS CLICKED
-    // $('.add-movie').on('click', () => {
-    //     //triggering hidden modal button
-    //     $('.add-movie-modal-btn').trigger('click')
-    // })
+
 
     // CREATE OBJECT WITH INPUT, THEN PASS IT INTO postMovie()
     $('.addBtn').on('click', () => {

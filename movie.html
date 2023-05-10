@@ -64,18 +64,13 @@
 </div>
 
 <!-- hidden button trigger modal -->
-<!--<button type="button" class="btn btn-primary add-movie-modal-btn" data-bs-toggle="modal"-->
-<!--        data-bs-target="#addMovieModal">-->
-<!--    show modal-->
-<!--</button>-->
-
 <button type="button" class="btn btn-primary edit-movie-modal-btn" data-bs-toggle="modal"
         data-bs-target="#editMovieModal">
     show modal
 </button>
 
-<!--TODO NEED GRADIENT TO COVER THE WHOLE BACKGROUND, CURRENTLY SCOPED TO A DIV-->
-<div id="grad" class="grad">
+
+<!--<div id="grad" class="grad">-->
 
     <!-- Add Movie Modal -->
     <div class="modal fade" id="addMovieModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -139,10 +134,10 @@
     </div>
 
     <!--CONTAINER TO RENDER CARDS-->
-    <div class="container">
+    <div class="container d-flex flex-wrap">
 
     </div>
-</div>
+<!--</div>-->
 <script src="js/jquery-3.6.4.js"></script>
 <script src="js/movies.js"></script>
 <script src="bootstrap/js/bootstrap.bundle.js"></script>
