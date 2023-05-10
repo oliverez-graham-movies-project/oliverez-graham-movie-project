@@ -112,6 +112,8 @@
     color: #fff;
 }
 
+
+
 .modal-header {
     border-bottom: none;
 }
@@ -126,8 +128,12 @@
 
 .modal-body input {
     background-color: #333;
-    color: #fff;
+    color: #333;
     border-color: #fbc02d;
+}
+.modal-body input:focus{
+    background-color: #333;
+    color: wheat;
 }
 
 .modal-footer button {
