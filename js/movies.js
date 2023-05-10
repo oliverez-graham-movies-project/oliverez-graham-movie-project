@@ -45,10 +45,10 @@
                 <div class="top-holder d-flex flex-column align-items-center ">
 <!--                    <p class="title"><h1><u>${movieDB.Title}</u></h1></p>-->
                 </div>
-                <p class="genre text-center"><span class="badge rounded-pill bg-dark">${movieDB.Genre}</span></p>
+                <p class="genre text-center"><span class="badge rounded-pill bg-white">${movieDB.Genre}</span></p>
                 <img src="${movieDB.Poster}" class="card-img-top" alt="${movieDB.Title}">
                 <div class="card-body">
-                <p class="rating"><i class="fa-sharp fa-solid fa-star"></i> Rating: ${movie.rating}/10</p>
+                <p class="rating d-flex justify-content-center"><i class="fa-sharp fa-solid fa-star"></i> Rating: ${movie.rating}/10</p>
                 
                 <hr>
                     
