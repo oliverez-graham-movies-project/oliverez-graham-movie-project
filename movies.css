@@ -22,27 +22,25 @@
 
 
 .navbar{
-    background-color: #d32f2f;
-    background-image: linear-gradient(45deg, #d32f2f, #fbc02d);
+    background-color: #1A2639;
 }
 
 .navbar-brand{
-    font-family: "Brush Script MT", serif;
+    font-family: "zapfino";
     font-size: 40px;
-    color: #fbc02d
+    color: wheat;
+
 }
 .nav-link {
-    color: #fbc02d !important;
+    color: wheat !important;
 }
-
-.modal-header button {
-    color: #fbc02d;
-}
-
 
 
 .dropdown-menu{
-    background-image: linear-gradient(-45deg, #d32f2f, #fbc02d);
+    background-color: #485161;
+}
+.dropdown-item{
+    color: #babec4;
 }
 
 @keyframes spin {
@@ -67,7 +65,7 @@
     margin: auto;
     /*background-image: linear-gradient(to top, #E7622F, #ED872D, #6B6361, #3E4A61, #1A2639, #1A2639);*/
     /*color: skyblue;*/
-    font-family: "Big Caslon", serif;
+    font-family: "Futura Condensed Medium" SansSerif;
     font-size: 20px;
     /*border-image: linear-gradient(#E7622F, #ED872D, #6B6361, #3E4A61, #1A2639, #1A2639)1;*/
     border-width: 3px;
@@ -86,6 +84,9 @@
     border-radius: 10px 10px 10px 10px;
 }
 
+.dropdown-toggle{
+    font-family: Futura ;
+}
 
 
 .btn-primary {
@@ -116,6 +117,10 @@
 
 .modal-header {
     border-bottom: none;
+}
+
+.btn-close{
+    background-color: #333;
 }
 
 .modal-title {
@@ -149,9 +154,7 @@
 }
 
 
-.form-text{
-    color: #fbc02d;
-}
+
 
 
 body{
