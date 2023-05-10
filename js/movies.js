@@ -1,7 +1,6 @@
 (function () {
     'use strict'
 
-    const OMDB_API_KEY = '79f519c7'
     const movieUrl = 'https://mysterious-flat-dawn.glitch.me/movies'
 
 
@@ -14,21 +13,20 @@
     }
 
     // hide loading
-    // uncomment if you need it at line 39
     const hideLoading = () => {
         loader.removeClass("display")
     }
 
     // const fetchHandler = () => {
     //     displayLoading()
-    //     // setTimeout(() => {
-    //     //     loader.removeClass("display")
-    //     //     //     half a second delay
-    //     // }, 500)
+    //     setTimeout(() => {
+    //         loader.removeClass("display")
+    //         //     half a second delay
+    //     }, 9000)
     //
     //     fetch(movieUrl).then(res => res.json()).then(res => {
     //         //remove timeout above and uncomment hideloading to have icon go away right when the info is loaded
-    //         hideLoading()
+    //         // hideLoading()
     //         console.log(res)
     //     })
     // }
@@ -156,7 +154,7 @@
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(...obj),
+            body: JSON.stringify(obj),
         };
         fetch(`https://mysterious-flat-dawn.glitch.me/movies/${id}`, patchOptions)
             .then(res => res.json()).then(json => {
@@ -168,12 +166,22 @@
 
     let movieId;
 
-    const editMovieModal = e => {
+    const editMovieModal = async e => {
         e.preventDefault()
         //if its our button, show modal window and update id of movie
         if (e.target.classList.contains('editBtn')) {
             // console.log('clicked')
             const id = e.target.id.replace(/[^0-9]/g,"");
+            const results = await fetch(movieUrl)
+            const json = await results.json()
+            console.log(json)
+            const [filteredMovie] = json.filter((movie) => {
+                return movie.id == id
+            })
+
+            $('#edit-movie-title').val(filteredMovie.title)
+            $('#edit-movie-rating').val(filteredMovie.rating)
+            console.log(filteredMovie)
             console.log(id)
             movieId = id
             $('.edit-movie-modal-btn').trigger('click')
@@ -181,14 +189,19 @@
         }
     }
 
-    const editClick = () => {
+    const editClick = async () => {
         console.log('clicked edit')
-        if ($('#edit-movie-title').val() === '' || ('#edit-movie-rating').val()){
-            return alert("You must edit both title and ranking")
-        }
+
+        // if ($('#edit-movie-title').val() === '' || ('#edit-movie-rating').val()){
+        //     return alert("You must edit both title and ranking")
+        // }
+
+
         const movieObj = {title: $('#edit-movie-title').val(), rating:  $('#edit-movie-rating').val()}
         console.log(movieObj)
         console.log(movieId)
+
+
         patchMovie(movieObj, movieId)
         $('#movie-rating').val("")
         $('#movie-title').val("")
