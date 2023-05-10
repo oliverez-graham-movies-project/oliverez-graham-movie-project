@@ -14,13 +14,16 @@
     // ***********LOADER WHEEL********** //
     const displayLoading = () => {
         $('#loading').addClass("display")
+        $('body').css('background-attachment', "fixed")
+
     }
 
     const hideLoading = () => {
         $('#loading').removeClass("display")
+        // $('body').css('background-attachment', "initial")
     }
 
-     const fetchHandler = async () => {
+    const fetchHandler = async () => {
         displayLoading()
         // UNCOMMENT FOR TIMER
         // setTimeout(() => {
@@ -48,13 +51,9 @@
                 <img src="${movieDB.Poster}" class="card-img-top" alt="${movieDB.Title}">
                 <div class="card-body">
                 <p class="rating d-flex justify-content-center"><i class="fa-sharp fa-solid fa-star"></i> Rating: ${movie.rating}/10</p>
-                
                 <hr>
-                    
-                    
                     <p class="director">Director: ${movieDB.Director}</p>
                     <hr>
-                    
                     <p>
   <a class="dropdown-toggle" data-bs-toggle="collapse" href="#collapse-${movie.id}" role="button" aria-expanded="false" aria-controls="collapseExample">
     Plot
@@ -68,11 +67,13 @@
                     
                     
                       <button type="button" class="btn btn-primary deleteBtn mt-2" id="delete-${movie.id}">Delete</button>
-                    <button class="btn btn-primary editBtn mt-2" id="patch-${movie.id}">Edit</button>
+                     <button class="btn btn-primary editBtn mt-2" id="patch-${movie.id}">Edit</button>
                 </div>
             </div>
             `
         })
+
+        //  <button class="btn btn-primary editBtn mt-2" id="patch-${movie.id}">Edit</button>
         await Promise.all(newArr)
         $('.container').html(markup)
     }
@@ -94,16 +95,16 @@
     }
 
     // SHOW MODAL WHEN ADD MOVIE IS CLICKED
-    $('.add-movie').on('click', () => {
-        //triggering hidden modal button
-        $('.add-movie-modal-btn').trigger('click')
-    })
+    // $('.add-movie').on('click', () => {
+    //     //triggering hidden modal button
+    //     $('.add-movie-modal-btn').trigger('click')
+    // })
 
     // CREATE OBJECT WITH INPUT, THEN PASS IT INTO postMovie()
     $('.addBtn').on('click', () => {
         const title = $('#movie-title').val()
         const rating = $('#movie-rating').val()
-        const movieObj = {title,  rating}
+        const movieObj = {title, rating}
         postMovie(movieObj)
         // CLEARS THE INPUT FIELD
         $('#movie-rating').val("")
@@ -121,13 +122,13 @@
 
     const deleteMovie = e => {
         // FOR EVENT CATCHING ON PARENT LISTENER
-        if(e.target.classList.contains('deleteBtn')) {
+        if (e.target.classList.contains('deleteBtn')) {
             e.preventDefault()
             //ONLY DELETE IF THEY CONFIRM
             const confirmed = confirm('Are you sure you want to delete this movie?')
             if (confirmed) {
                 // PULLING JUST THE NUMBER FROM THE STRING, TO USE AS ID
-                const id = e.target.id.replace(/[^0-9]/g,"");
+                const id = e.target.id.replace(/[^0-9]/g, "");
                 fetch(`https://mysterious-flat-dawn.glitch.me/movies/${id}`, deleteOptions).then(res => {
                     fetchHandler()
                 })
@@ -164,7 +165,7 @@
         // FOR EVENT CATCHING ON PARENT LISTENER
         if (e.target.classList.contains('editBtn')) {
             // PULL THE NUMBER FROM THE ID ON BUTTON
-            const id = e.target.id.replace(/[^0-9]/g,"");
+            const id = e.target.id.replace(/[^0-9]/g, "");
             // FETCH MOVIE DATA
             const results = await fetch(movieUrl)
             const json = await results.json()
@@ -187,12 +188,12 @@
     const editModalSubmit = () => {
         // TODO CAN MOST LIKELY HANDLE IN ERROR HANDLING
         // IF EITHER VALUE IS EMPTY ALERT USER
-        if ($('#edit-movie-title').val() === '' || $('#edit-movie-rating').val() === ''){
+        if ($('#edit-movie-title').val() === '' || $('#edit-movie-rating').val() === '') {
             return alert("There must be a title and ranking")
         }
 
         // CREATE OBJECT BASED ON INPUT VALUES
-        const movieObj = {title: $('#edit-movie-title').val(), rating:  $('#edit-movie-rating').val()}
+        const movieObj = {title: $('#edit-movie-title').val(), rating: $('#edit-movie-rating').val()}
 
         // RUN PATCH FUNCTION WITH NEW OBJECT AND USE HOISTED movieId VALUE FROM showEditModal
         patchMovie(movieObj, movieId)
@@ -209,9 +210,15 @@
     // EVENT LISTENER ON PARENT FOR EVENT PROPAGATION
     $('.container').on('click', showEditModal)
 
+    // ************NAV SEARCH*********** //
+    //need a function that takes an array of our movie data, then sorts it by name each change
+
+    //Select form input
+    console.log($('.search-form'));
+
+
     // INITIAL FETCH CALL
     fetchHandler()
-
 
 
 })()
