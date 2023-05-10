@@ -14,7 +14,7 @@
     display: inline-block;
 }
 
-.add-movie-modal-btn, .edit-movie-modal-btn {
+.edit-movie-modal-btn {
     display: none;
 }
 
@@ -148,6 +148,10 @@
 
 .form-text{
     color: #fbc02d;
+}
+
+.btn-close {
+    background-color: white !important;
 }
 
 
