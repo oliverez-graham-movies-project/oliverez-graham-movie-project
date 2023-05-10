@@ -56,7 +56,7 @@
             <div class="card col col-md-6 col-lg-6 col-xl-4" id="grad2">
             <div class="top-holder d-flex flex-column align-items-center ">
                 <p class="title"><h1><u>${movieDB.Title}</u></h1></p>
-                <p class="rating"><i class="fa-sharp fa-solid fa-star"></i> Rating: ${movieDB.imdbRating}/10</p>
+                <p class="rating"><i class="fa-sharp fa-solid fa-star"></i> Rating: ${movie.rating}/10</p>
             </div>
                 <img src="${movieDB.Poster}" class="card-img-top" alt="${movieDB.Title}">
                 <div class="card-body">
@@ -65,8 +65,8 @@
                     <p class="director">Director: ${movieDB.Director}</p>
                     <hr>
                     <p class="synopsis">Synospis: ${movieDB.Plot}</p>
-                      <button type="button" class="btn btn-primary deleteBtn" id="${movie.id}">Delete</button>
-                    <button class="btn btn-primary editBtn">Edit</button>
+                      <button type="button" class="btn btn-primary deleteBtn" id="delete-${movie.id}">Delete</button>
+                    <button class="btn btn-primary editBtn" id="patch-${movie.id}">Edit</button>
 
                 </div>
             </div>
@@ -128,11 +128,13 @@
     const deleteMovie = e => {
         if(e.target.classList.contains('deleteBtn')) {
             e.preventDefault()
+            console.log(e.target.id);
+
             const confirmed = confirm('Are you sure you want to delete this movie?')
             if (confirmed) {
                 console.log('clicked')
-                console.log(e.target.id);
-                const id = e.target.id
+                const id = e.target.id.replace(/[^0-9]/g,"");
+                console.log(id)
                 fetch(`https://mysterious-flat-dawn.glitch.me/movies/${id}`, deleteOptions).then(res => {
                     fetchHandler()
 
@@ -154,7 +156,7 @@
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(obj),
+            body: JSON.stringify(...obj),
         };
         fetch(`https://mysterious-flat-dawn.glitch.me/movies/${id}`, patchOptions)
             .then(res => res.json()).then(json => {
@@ -164,16 +166,39 @@
             .catch(/* handle errors */);
     }
 
-    const editMovie = e => {
-        e.preventDefault()
-        if (e.target.classList.contains('editBtn')) {
-            console.log('clicked')
+    let movieId;
 
+    const editMovieModal = e => {
+        e.preventDefault()
+        //if its our button, show modal window and update id of movie
+        if (e.target.classList.contains('editBtn')) {
+            // console.log('clicked')
+            const id = e.target.id.replace(/[^0-9]/g,"");
+            console.log(id)
+            movieId = id
+            $('.edit-movie-modal-btn').trigger('click')
 
         }
     }
 
-    $('.container').on('click', editMovie)
+    const editClick = () => {
+        console.log('clicked edit')
+        if ($('#edit-movie-title').val() === '' || ('#edit-movie-rating').val()){
+            return alert("You must edit both title and ranking")
+        }
+        const movieObj = {title: $('#edit-movie-title').val(), rating:  $('#edit-movie-rating').val()}
+        console.log(movieObj)
+        console.log(movieId)
+        patchMovie(movieObj, movieId)
+        $('#movie-rating').val("")
+        $('#movie-title').val("")
+    }
+
+    $('.editBtn-form').on('click', editClick)
+
+
+
+    $('.container').on('click', editMovieModal)
 
 
     // **************************** //
