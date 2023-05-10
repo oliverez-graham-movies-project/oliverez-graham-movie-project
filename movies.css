@@ -147,6 +147,14 @@
     color: wheat;
 }
 
+#ratingHelp{
+    color: wheat;
+}
+
+#titleHelp{
+    color: wheat;
+}
+
 .modal-footer button {
     background-color: #fbc02d;
     border-color: #fbc02d;
