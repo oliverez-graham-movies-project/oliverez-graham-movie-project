@@ -14,7 +14,7 @@
     display: inline-block;
 }
 
-.add-movie-modal-btn, .edit-movie-modal-btn {
+.edit-movie-modal-btn {
     display: none;
 }
 
@@ -65,13 +65,18 @@
     margin: auto;
     /*background-image: linear-gradient(to top, #E7622F, #ED872D, #6B6361, #3E4A61, #1A2639, #1A2639);*/
     /*color: skyblue;*/
+
     font-family: "Futura Condensed Medium" SansSerif;
+    /*font-family: "Big Caslon", serif;*/
     font-size: 20px;
     /*border-image: linear-gradient(#E7622F, #ED872D, #6B6361, #3E4A61, #1A2639, #1A2639)1;*/
     border-width: 3px;
     border-style: solid;
     border-radius: 5px 5px 5px 5px;
     padding-top: .5em;
+    background-color: rgba(0,0,0,.5);
+    color: #fff;
+    font-family: "Futura Condensed Medium" SansSerif;
 }
 
 
@@ -156,20 +161,21 @@
 
 
 
+.btn-close {
+    background-color: white !important;
+}
+
 
 body{
     background: #E7622F;
-    background: linear-gradient(#E7622F, #ED872D, #6B6361, #3E4A61, #1A2639, #1A2639);
+    /*background: linear-gradient(#E7622F, #ED872D, #6B6361, #3E4A61, #1A2639, #1A2639);*/
+    background: linear-gradient(#a3a8b0, #8d939c, #767d88, #5f6774, #485161, #313c4d, #1a2639, #172233, #151e2e);
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     height: 100%;
     width: 100%;
     /*background-attachment: fixed;*/
-}
-
-.card {
-    background-color: rgba(0,0,0,.5);
-    color: #fff;
 }
 
 .bg-white{
@@ -180,3 +186,19 @@ body{
     margin-bottom: 0;
 }
 
+.deleteBtn{
+    background-color: rgba(0,0,0,.5);
+    color: #fff;
+    border-color: #485161;
+}
+
+.editBtn{
+    background-color: rgba(0,0,0,.5);
+    color: #fff;
+    border-color: #485161;
+}
+
+.dropdown-toggle{
+    color: white;
+    text-decoration: none;
+}
