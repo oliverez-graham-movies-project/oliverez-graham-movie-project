@@ -37,12 +37,9 @@
         displayLoading()
         const moviesResponse = await fetch(movieUrl)
         const moviesJSON = await moviesResponse.json()
+        await createMovieCards(moviesJSON)
         hideLoading()
         console.log(moviesJSON)
-
-        createMovieCards(moviesJSON)
-
-
     }
 
     const createMovieCards = async arr => {
@@ -50,25 +47,34 @@
         // const movies = await fetchHandler()
         const newArr = arr.map(async movie => {
             const movieTitle = movie.title
-            const movieDirector = movie.director
-            const movieRating = movie.rating
-            const movieGenre = movie.genre
-            const movieImg = await fetchDBTitle(movieTitle)
-            console.log(movieImg)
+            const movieDB = await fetchDBTitle(movieTitle)
+            console.log(movieDB)
+            // console.log(movieImg)
 
             return markup += `
-            <div class="card" style="width: 18rem;">
-                <img src="${movieImg}" class="card-img-top" alt="${movieTitle}">
+
+            <div class="card col col-md-6 col-lg-6 col-xl-4" id="grad2">
+            <div class="top-holder d-flex flex-column align-items-center ">
+                <p class="title"><h1><u>${movieDB.Title}</u></h1></p>
+                <p class="rating"><i class="fa-sharp fa-solid fa-star"></i> Rating: ${movieDB.imdbRating}/10</p>
+            </div>
+                <img src="${movieDB.Poster}" class="card-img-top" alt="${movieDB.Title}">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <p class="genre"><span class="badge rounded-pill bg-dark">${movieDB.Genre}</span></p>
+                    <hr>
+                    <p class="director">Director: ${movieDB.Director}</p>
+                    <hr>
+                    <p class="synopsis">Synospis: ${movieDB.Plot}</p>
+                      <button type="button" class="btn btn-primary deleteBtn" id="${movie.id}">Delete</button>
+                    <button class="btn btn-primary editBtn">Edit</button>
+
                 </div>
             </div>
+            </div>
+            <br>
             `
         })
         await Promise.all(newArr)
-
         $('.container').html(markup)
     }
 
@@ -94,6 +100,21 @@
 
     // postMovie({title: 'godzilla', genre: 'munster movei'})
 
+    // show modal on click
+    $('.add-movie').on('click', () => {
+        console.log('clicked')
+        //triggering hidden modal button
+        $('.add-movie-modal-btn').trigger('click')
+    })
+
+    $('.addBtn').on('click', () => {
+        const movieObj = {title: $('#movie-title').val(), rating:  $('#movie-rating').val()}
+        postMovie(movieObj)
+        $('#movie-rating').val("")
+        $('#movie-title').val("")
+    })
+
+
 
     // **************************** //
     //Delete request
@@ -105,15 +126,25 @@
         },
     };
     const deleteMovie = e => {
-        console.log(e.target.id);
-        const id = e.target.id
-        fetch(`https://mysterious-flat-dawn.glitch.me/movies/${id}`, deleteOptions).then(res => {
-            fetchHandler()
-        })
-            .catch(/* handle errors */);
+        if(e.target.classList.contains('deleteBtn')) {
+            e.preventDefault()
+            const confirmed = confirm('Are you sure you want to delete this movie?')
+            if (confirmed) {
+                console.log('clicked')
+                console.log(e.target.id);
+                const id = e.target.id
+                fetch(`https://mysterious-flat-dawn.glitch.me/movies/${id}`, deleteOptions).then(res => {
+                    fetchHandler()
+
+                })
+                    .catch(/* handle errors */);
+            }
+
+        }
+
     }
 
-    $('.deleteBtn').on('click', deleteMovie)
+    $('.container').on('click', deleteMovie)
 
     // **************************** //
     //Patch request
@@ -133,7 +164,17 @@
             .catch(/* handle errors */);
     }
 
-    // patchMovie({title: 'Godzilla', genre: 'monster movie'}, 9)
+    const editMovie = e => {
+        e.preventDefault()
+        if (e.target.classList.contains('editBtn')) {
+            console.log('clicked')
+
+
+        }
+    }
+
+    $('.container').on('click', editMovie)
+
 
     // **************************** //
     //OMDB fetch
@@ -142,14 +183,7 @@
         const urlString = `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&t=${title}`
         const response = await fetch(urlString)
         const movieInfo = await response.json()
-
-        console.log(movieInfo)
-        return movieInfo.Poster
-
-        console.log(movieInfo.Poster)
-        $('.card').attr('src', PosterURL); // set poster
-
-
+        return movieInfo
     }
 
     //Curriculum way
@@ -163,7 +197,6 @@
 
     fetchHandler()
 
+
+
 })()
-
-
-
