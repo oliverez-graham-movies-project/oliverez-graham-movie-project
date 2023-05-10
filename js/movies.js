@@ -3,59 +3,49 @@
 
     const movieUrl = 'https://mysterious-flat-dawn.glitch.me/movies'
 
+    // ************OMDB FETCH*********** //
+    const fetchDBTitle = async title => {
+        const urlString = `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&t=${title}`
+        const response = await fetch(urlString)
+        const movieInfo = await response.json()
+        return movieInfo
+    }
 
-    //selecting loading div
-    const loader = $('#loading')
-
-    // add display to loader
+    // ***********LOADER WHEEL********** //
     const displayLoading = () => {
-        loader.addClass("display")
+        $('#loading').addClass("display")
     }
 
-    // hide loading
     const hideLoading = () => {
-        loader.removeClass("display")
+        $('#loading').removeClass("display")
     }
 
-    // const fetchHandler = () => {
-    //     displayLoading()
-    //     setTimeout(() => {
-    //         loader.removeClass("display")
-    //         //     half a second delay
-    //     }, 9000)
-    //
-    //     fetch(movieUrl).then(res => res.json()).then(res => {
-    //         //remove timeout above and uncomment hideloading to have icon go away right when the info is loaded
-    //         // hideLoading()
-    //         console.log(res)
-    //     })
-    // }
-
-    const fetchHandler = async () => {
+     const fetchHandler = async () => {
         displayLoading()
+        // UNCOMMENT FOR TIMER
+        // setTimeout(() => {
+        //             hideLoading()
+        //             //     half a second delay
+        //         }, 4000)
         const moviesResponse = await fetch(movieUrl)
         const moviesJSON = await moviesResponse.json()
         await createMovieCards(moviesJSON)
         hideLoading()
-        console.log(moviesJSON)
     }
 
+    // ***********CREATE CARDS********** //
+    // TODO CLEAN UP FUNCTION, ASYNC MAY NOT BE NECESSARY
     const createMovieCards = async arr => {
         let markup = ''
-        // const movies = await fetchHandler()
         const newArr = arr.map(async movie => {
             const movieTitle = movie.title
             const movieDB = await fetchDBTitle(movieTitle)
-            console.log(movieDB)
-            // console.log(movieImg)
-
             return markup += `
-
-            <div class="card col col-md-6 col-lg-6 col-xl-4" id="grad2">
-            <div class="top-holder d-flex flex-column align-items-center ">
-                <p class="title"><h1><u>${movieDB.Title}</u></h1></p>
-                <p class="rating"><i class="fa-sharp fa-solid fa-star"></i> Rating: ${movie.rating}/10</p>
-            </div>
+            <div class="card col col-md-6 col-lg-6 col-xl-4 mt-3" id="grad2">
+                <div class="top-holder d-flex flex-column align-items-center ">
+                    <p class="title"><h1><u>${movieDB.Title}</u></h1></p>
+                    <p class="rating"><i class="fa-sharp fa-solid fa-star"></i> Rating: ${movie.rating}/10</p>
+                </div>
                 <img src="${movieDB.Poster}" class="card-img-top" alt="${movieDB.Title}">
                 <div class="card-body">
                     <p class="genre"><span class="badge rounded-pill bg-dark">${movieDB.Genre}</span></p>
@@ -65,22 +55,15 @@
                     <p class="synopsis">Synospis: ${movieDB.Plot}</p>
                       <button type="button" class="btn btn-primary deleteBtn" id="delete-${movie.id}">Delete</button>
                     <button class="btn btn-primary editBtn" id="patch-${movie.id}">Edit</button>
-
                 </div>
             </div>
-            </div>
-            <br>
             `
         })
         await Promise.all(newArr)
         $('.container').html(markup)
     }
 
-
-
-
-    // **************************** //
-    //post request
+    // ************POST REQUEST FUNCTIONS*********** //
     const postMovie = obj => {
         const postOptions = {
             method: 'POST',
@@ -96,58 +79,53 @@
             .catch(/* handle errors */);
     }
 
-    // postMovie({title: 'godzilla', genre: 'munster movei'})
-
-    // show modal on click
+    // SHOW MODAL WHEN ADD MOVIE IS CLICKED
     $('.add-movie').on('click', () => {
-        console.log('clicked')
         //triggering hidden modal button
         $('.add-movie-modal-btn').trigger('click')
     })
 
+    // CREATE OBJECT WITH INPUT, THEN PASS IT INTO postMovie()
     $('.addBtn').on('click', () => {
-        const movieObj = {title: $('#movie-title').val(), rating:  $('#movie-rating').val()}
+        const title = $('#movie-title').val()
+        const rating = $('#movie-rating').val()
+        const movieObj = {title,  rating}
         postMovie(movieObj)
+        // CLEARS THE INPUT FIELD
         $('#movie-rating').val("")
         $('#movie-title').val("")
     })
 
-
-
-    // **************************** //
-    //Delete request
-    //fetching with deleteOptions, and given an id
+    // ************DELETE REQUEST FUNCTIONS*********** //
     const deleteOptions = {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
         },
     };
+
+
     const deleteMovie = e => {
+        // FOR EVENT CATCHING ON PARENT LISTENER
         if(e.target.classList.contains('deleteBtn')) {
             e.preventDefault()
-            console.log(e.target.id);
-
+            //ONLY DELETE IF THEY CONFIRM
             const confirmed = confirm('Are you sure you want to delete this movie?')
             if (confirmed) {
-                console.log('clicked')
+                // PULLING JUST THE NUMBER FROM THE STRING, TO USE AS ID
                 const id = e.target.id.replace(/[^0-9]/g,"");
-                console.log(id)
                 fetch(`https://mysterious-flat-dawn.glitch.me/movies/${id}`, deleteOptions).then(res => {
                     fetchHandler()
-
                 })
                     .catch(/* handle errors */);
             }
-
         }
-
     }
 
+    // EVENT LISTENER ON PARENT FOR EVENT PROPAGATION
     $('.container').on('click', deleteMovie)
 
-    // **************************** //
-    //Patch request
+// ************PATCH REQUEST FUNCTIONS*********** //
     const patchMovie = (obj, id) => {
         const patchOptions = {
             method: 'PATCH',
@@ -164,75 +142,60 @@
             .catch(/* handle errors */);
     }
 
+    // NEED TO HOIST THE ID FROM THE CARD AND USE IT IN MODAL
     let movieId;
 
-    const editMovieModal = async e => {
+    const showEditModal = async e => {
         e.preventDefault()
-        //if its our button, show modal window and update id of movie
+        // FOR EVENT CATCHING ON PARENT LISTENER
         if (e.target.classList.contains('editBtn')) {
-            // console.log('clicked')
+            // PULL THE NUMBER FROM THE ID ON BUTTON
             const id = e.target.id.replace(/[^0-9]/g,"");
+            // FETCH MOVIE DATA
             const results = await fetch(movieUrl)
             const json = await results.json()
-            console.log(json)
+            // FILTER IT BASED ON OUR BUTTON ID TO GET CHOSEN MOVIE DATA
             const [filteredMovie] = json.filter((movie) => {
                 return movie.id == id
             })
-
+            // USED filteredMovie DATA TO POPULATE EDIT MODAL
             $('#edit-movie-title').val(filteredMovie.title)
             $('#edit-movie-rating').val(filteredMovie.rating)
-            console.log(filteredMovie)
-            console.log(id)
+            // HOIST UPDATED ID TO USE IN editModalSubmit
             movieId = id
+            // CLICK INVISIBLE MODAL BUTTON TO SHOW MODAL
+            // TODO THERE IS A BETTER WAY TO DO THIS, I JUST DONT KNOW HOW
             $('.edit-movie-modal-btn').trigger('click')
 
         }
     }
 
-    const editClick = async () => {
-        console.log('clicked edit')
+    const editModalSubmit = () => {
+        // TODO CAN MOST LIKELY HANDLE IN ERROR HANDLING
+        // IF EITHER VALUE IS EMPTY ALERT USER
+        if ($('#edit-movie-title').val() === '' || $('#edit-movie-rating').val() === ''){
+            return alert("There must be a title and ranking")
+        }
 
-        // if ($('#edit-movie-title').val() === '' || ('#edit-movie-rating').val()){
-        //     return alert("You must edit both title and ranking")
-        // }
-
-
+        // CREATE OBJECT BASED ON INPUT VALUES
         const movieObj = {title: $('#edit-movie-title').val(), rating:  $('#edit-movie-rating').val()}
-        console.log(movieObj)
-        console.log(movieId)
 
-
+        // RUN PATCH FUNCTION WITH NEW OBJECT AND USE HOISTED movieId VALUE FROM showEditModal
         patchMovie(movieObj, movieId)
+
+        // TODO MAY NOT NEED TO CLEAR, NEED TO TEST
+        // CLEARS VALUES
         $('#movie-rating').val("")
         $('#movie-title').val("")
     }
 
-    $('.editBtn-form').on('click', editClick)
+    // CLICK EVENT FOR EDIT MODAL SUBMIT
+    $('.editBtn-form').on('click', editModalSubmit)
 
+    // EVENT LISTENER ON PARENT FOR EVENT PROPAGATION
+    $('.container').on('click', showEditModal)
 
-
-    $('.container').on('click', editMovieModal)
-
-
-    // **************************** //
-    //OMDB fetch
-    // Async Await way
-    const fetchDBTitle = async title => {
-        const urlString = `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&t=${title}`
-        const response = await fetch(urlString)
-        const movieInfo = await response.json()
-        return movieInfo
-    }
-
-    //Curriculum way
-    // const fetchDBTitle = title => {
-    //     const urlString = `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&t=${title}`
-    //     fetch(urlString).then(res => res.json()).then(json => console.log(json))
-    // }
-
-    // fetchDBTitle('the big lebowski')
-
-
+    // INITIAL FETCH CALL
     fetchHandler()
 
 

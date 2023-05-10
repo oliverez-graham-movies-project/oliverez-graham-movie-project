@@ -10,10 +10,13 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-light" style="background-color: #d32f2f; background-image: linear-gradient(45deg, #d32f2f, #fbc02d);">
+<!--TODO REMOVE ALL STYLING FROM HTML AND PUT IN CSS-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-light"
+     style="background-color: #d32f2f; background-image: linear-gradient(45deg, #d32f2f, #fbc02d);">
     <div class="container-fluid">
         <a class="navbar-brand" href="#" style="color: #fbc02d;">Cinema Chateau</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -22,72 +25,86 @@
                     <a class="nav-link active" aria-current="page" href="#" style="color: #fbc02d;">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="https://www.imdb.com/?ref_=nv_home" style="color: #fbc02d;">Find out More Here<i class="fa-brands fa-imdb fa-2xl" style="color: #fbc02d;"></i></a>
+                    <a class="nav-link" href="https://www.imdb.com/?ref_=nv_home" style="color: #fbc02d;">Find out More
+                        Here<i class="fa-brands fa-imdb fa-2xl" style="color: #fbc02d;"></i></a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #fbc02d;">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false" style="color: #fbc02d;">
                         Customize Movie List
                     </a>
                     <ul class="dropdown-menu customize-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item add-movie" href="#"><i class="fas fa-plus"></i> Add Movie</a></li>
-                        <li><a class="dropdown-item remove-movie" href="#"><i class="fas fa-eraser"></i> Remove Movie</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item buy-tickets" href="#"><i class="fas fa-ticket-alt"></i> Buy Tickets</a></li>
-                        <li><a class="dropdown-item view-trailers" href="#"><i class="fas fa-film"></i> View Trailers</a></li>
+                        <li><a class="dropdown-item remove-movie" href="#"><i class="fas fa-eraser"></i> Remove
+                            Movie</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item buy-tickets" href="#"><i class="fas fa-ticket-alt"></i> Buy Tickets</a>
+                        </li>
+                        <li><a class="dropdown-item view-trailers" href="#"><i class="fas fa-film"></i> View
+                            Trailers</a></li>
                     </ul>
                 </li>
             </ul>
             <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-warning" type="submit" style="border-color: #d32f2f; color: #d32f2f;">Search</button>
+                <button class="btn btn-outline-warning" type="submit" style="border-color: #d32f2f; color: #d32f2f;">
+                    Search
+                </button>
             </form>
         </div>
     </div>
 </nav>
 
+<!--Loader Wheel container-->
+<div class="loader-wheel text-center">
+    <img class="mt-5" src="images/film-reel-icon.png" id="loading"/>
+</div>
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary add-movie-modal-btn" data-bs-toggle="modal" data-bs-target="#addMovieModal">
+<!-- hidden button trigger modal -->
+<button type="button" class="btn btn-primary add-movie-modal-btn" data-bs-toggle="modal"
+        data-bs-target="#addMovieModal">
     show modal
 </button>
 
-<button type="button" class="btn btn-primary edit-movie-modal-btn" data-bs-toggle="modal" data-bs-target="#editMovieModal">
+<button type="button" class="btn btn-primary edit-movie-modal-btn" data-bs-toggle="modal"
+        data-bs-target="#editMovieModal">
     show modal
 </button>
-  
+
+<!--TODO NEED GRADIENT TO COVER THE WHOLE BACKGROUND, CURRENTLY SCOPED TO A DIV-->
 <div id="grad" class="grad">
 
-
-<!-- Add Movie Modal -->
-<div class="modal fade" id="addMovieModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="addMovieLabel">Add a movie!</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <!-- Add Movie Modal -->
+    <div class="modal fade" id="addMovieModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addMovieLabel">Add a movie!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="movie-title" class="form-label">Movie Title</label>
+                            <input type="text" class="form-control" id="movie-title" aria-describedby="emailHelp">
+                            <div id="titleHelp" class="form-text">Simply add a title and we do the rest!</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="movie-rating" class="form-label">Your Rating</label>
+                            <input type="text" class="form-control" id="movie-rating">
+                            <div id="ratingHelp" class="form-text">Add a rating between 1-10 (EX: 8.7 / 10)</div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary addBtn" data-bs-dismiss="modal">Save changes</button>
+                </div>
             </div>
-            <div class="modal-body">
-                <form>
-                    <div class="mb-3">
-                        <label for="movie-title" class="form-label">Movie Title</label>
-                        <input type="text" class="form-control" id="movie-title" aria-describedby="emailHelp">
-                        <div id="titleHelp" class="form-text">Simply add a title and we do the rest!</div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="movie-rating" class="form-label">Your Rating</label>
-                        <input type="text" class="form-control" id="movie-rating">
-                        <div id="ratingHelp" class="form-text">Add a rating between 1-10 (EX: 8.7 / 10)</div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary addBtn" data-bs-dismiss="modal">Save changes</button>
-            </div>
-
         </div>
     </div>
-</div>
 
     <!-- Edit Movie Modal -->
     <div class="modal fade" id="editMovieModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -113,25 +130,20 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary editBtn-form" data-bs-dismiss="modal">Save changes</button>
+                    <button type="submit" class="btn btn-primary editBtn-form" data-bs-dismiss="modal">Save changes
+                    </button>
                 </div>
-
             </div>
         </div>
     </div>
 
+    <!--CONTAINER TO RENDER CARDS-->
+    <div class="container">
 
-    <!--Container to render cards-->
-<div class="container">
-<!--Loader Wheel container-->
-    <div class="loader-wheel text-center">
-        <img class="mt-5" src="images/film-reel-icon.png" id="loading"/>
     </div>
 </div>
-</div>
-<script src="jquery-3.6.4.js"></script>
+<script src="js/jquery-3.6.4.js"></script>
 <script src="bootstrap/js/bootstrap.bundle.js"></script>
-
 <script src="js/keys.js"></script>
 <script src="js/movies.js"></script>
 </body>
