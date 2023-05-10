@@ -33,7 +33,7 @@
     color: #fbc02d
 }
 .nav-link {
-    color: #fbc02d
+    color: #fbc02d !important;
 }
 
 
