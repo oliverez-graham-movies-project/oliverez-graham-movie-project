@@ -35,6 +35,9 @@
     color: #fbc02d !important;
 }
 
+.modal-header button {
+    color: #fbc02d;
+}
 
 
 
@@ -59,7 +62,7 @@
 /*}*/
 
 .card {
-    width: 100vw;
+    /*width: 100vw;*/
     max-width: 18rem;
     margin: auto;
     /*background-image: linear-gradient(to top, #E7622F, #ED872D, #6B6361, #3E4A61, #1A2639, #1A2639);*/
@@ -144,6 +147,7 @@
     color: #fbc02d;
 }
 
+
 body{
     background: #E7622F;
     background: linear-gradient(#E7622F, #ED872D, #6B6361, #3E4A61, #1A2639, #1A2639);
@@ -162,3 +166,8 @@ body{
 .bg-white{
     color: black;
 }
+
+p {
+    margin-bottom: 0;
+}
+

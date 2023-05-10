@@ -43,7 +43,6 @@
             return markup += `
             <div class="card col col-md-6 col-lg-6 col-xl-4 mt-3" id="grad2">
                 <div class="top-holder d-flex flex-column align-items-center ">
-<!--                    <p class="title"><h1><u>${movieDB.Title}</u></h1></p>-->
                 </div>
                 <p class="genre text-center"><span class="badge rounded-pill bg-white">${movieDB.Genre}</span></p>
                 <img src="${movieDB.Poster}" class="card-img-top" alt="${movieDB.Title}">
@@ -55,9 +54,21 @@
                     
                     <p class="director">Director: ${movieDB.Director}</p>
                     <hr>
-                    <p class="synopsis">Synospis: ${movieDB.Plot}</p>
-                      <button type="button" class="btn btn-primary deleteBtn" id="delete-${movie.id}">Delete</button>
-                    <button class="btn btn-primary editBtn" id="patch-${movie.id}">Edit</button>
+                    
+                    <p>
+  <a class="dropdown-toggle" data-bs-toggle="collapse" href="#collapse-${movie.id}" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Plot
+  </a>
+</p>
+<div class="collapse" id="collapse-${movie.id}">
+  <div class="card card-body">
+   <p class="synopsis">${movieDB.Plot}</p>
+  </div>
+</div>
+                    
+                    
+                      <button type="button" class="btn btn-primary deleteBtn mt-2" id="delete-${movie.id}">Delete</button>
+                    <button class="btn btn-primary editBtn mt-2" id="patch-${movie.id}">Edit</button>
                 </div>
             </div>
             `
