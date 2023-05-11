@@ -59,9 +59,20 @@
 /*    background-image: linear-gradient(#E7622F, #ED872D, #6B6361, #3E4A61, #1A2639, #1A2639);*/
 /*}*/
 
+/*div.collapse > .card {*/
+/*    min-height: initial !important;*/
+/*}*/
+.card-set-height {
+    min-height: 53rem;
+}
+
 .card {
+    /*margin-top: 0;*/
     /*width: 100vw;*/
-    max-width: 18rem;
+    max-width: 19rem;
+    /*min-height: 53rem;*/
+    /*max-height: 65rem;*/
+    /*height:52rem;*/
     margin: auto;
     /*background-image: linear-gradient(to top, #E7622F, #ED872D, #6B6361, #3E4A61, #1A2639, #1A2639);*/
     /*color: skyblue;*/
@@ -79,6 +90,13 @@
     font-family: "Futura Condensed Medium" SansSerif;
 }
 
+.card-body {
+    /*padding: 3px;*/
+}
+
+.card-info {
+    margin-bottom: 0;
+}
 
 
 .card-img-top {
@@ -203,3 +221,4 @@ body{
     color: white;
     text-decoration: none;
 }
+
