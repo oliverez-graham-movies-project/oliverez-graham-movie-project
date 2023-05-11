@@ -29,8 +29,19 @@
     font-family: "zapfino";
     font-size: 1.5rem;
     color: wheat;
-
+    padding-top: 33px;
 }
+
+.fa-brands.fa-redhat{
+    color: wheat;
+    position: absolute;
+    top: 30px;
+    left: 15px;
+    transform: rotateY(180deg) rotateZ(5deg);
+}
+
+
+
 .nav-link {
     color: wheat !important;
 }
@@ -67,7 +78,6 @@
 }
 
 .card {
-    /*margin-top: 0;*/
     /*width: 100vw;*/
     max-width: 19rem;
     /*min-height: 53rem;*/
@@ -165,6 +175,19 @@
     color: wheat;
 }
 
+#ratingHelp{
+    color: wheat;
+}
+
+#titleHelp{
+    color: wheat;
+}
+
+.form-text{
+    color: wheat;
+}
+
+
 .modal-footer button {
     background-color: #fbc02d;
     border-color: #fbc02d;
@@ -222,3 +245,10 @@ body{
     text-decoration: none;
 }
 
+#icon {
+    line-height: 30px;
+}
+#icon {
+    vertical-align: middle;
+    font-size: 18px;
+}
