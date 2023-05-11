@@ -227,7 +227,7 @@
         }
 
         // CREATE OBJECT BASED ON INPUT VALUES
-        const movieObj = {title: $('#edit-movie-title').val(), rating: $('#edit-movie-rating').val()}
+        const movieObj = {title: $('#edit-movie-title').val().toLowerCase(), rating: $('#edit-movie-rating').val().toLowerCase()}
 
         // RUN PATCH FUNCTION WITH NEW OBJECT AND USE HOISTED movieId VALUE FROM showEditModal
         patchMovie(movieObj, movieId)
