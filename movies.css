@@ -29,8 +29,19 @@
     font-family: "zapfino";
     font-size: 1.5rem;
     color: wheat;
-
+    padding-top: 33px;
 }
+
+.fa-brands.fa-redhat{
+    color: wheat;
+    position: absolute;
+    top: 30px;
+    left: 15px;
+    transform: rotateY(180deg) rotateZ(5deg);
+}
+
+
+
 .nav-link {
     color: wheat !important;
 }
@@ -146,6 +157,19 @@
     background-color: #333;
     color: wheat;
 }
+
+#ratingHelp{
+    color: wheat;
+}
+
+#titleHelp{
+    color: wheat;
+}
+
+.form-text{
+    color: wheat;
+}
+
 
 .modal-footer button {
     background-color: #fbc02d;
