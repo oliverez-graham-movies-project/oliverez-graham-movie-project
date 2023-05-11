@@ -1,13 +1,9 @@
 #loading {
     width: 8rem;
     height: 8rem;
-    /*border: 5px solid #f3f3f3;*/
-    /*border-top: 6px solid #9c41f2;*/
-    /*border-radius: 100%;*/
     margin: auto;
     display: none;
     animation: spin 1s infinite linear;
-
 }
 
 #loading.display {
@@ -17,9 +13,6 @@
 .edit-movie-modal-btn {
     display: none;
 }
-
-
-
 
 .navbar{
     background-color: #1A2639;
@@ -40,16 +33,14 @@
     transform: rotateY(180deg) rotateZ(5deg);
 }
 
-
-
 .nav-link {
     color: wheat !important;
 }
 
-
 .dropdown-menu{
     background-color: #485161;
 }
+
 .dropdown-item{
     color: #babec4;
 }
@@ -62,35 +53,20 @@
         transform:rotate(360deg)
     }
 }
+
 .genre{
     text-transform: capitalize;
 }
 
-/*#grad {*/
-/*    background-image: linear-gradient(#E7622F, #ED872D, #6B6361, #3E4A61, #1A2639, #1A2639);*/
-/*}*/
-
-/*div.collapse > .card {*/
-/*    min-height: initial !important;*/
-/*}*/
 .card-set-height {
     min-height: 53rem;
 }
 
 .card {
-    /*width: 100vw;*/
     max-width: 19rem;
-    /*min-height: 53rem;*/
-    /*max-height: 65rem;*/
-    /*height:52rem;*/
     margin: auto;
-    /*background-image: linear-gradient(to top, #E7622F, #ED872D, #6B6361, #3E4A61, #1A2639, #1A2639);*/
-    /*color: skyblue;*/
-
     font-family: "Futura Condensed Medium" SansSerif;
-    /*font-family: "Big Caslon", serif;*/
     font-size: 20px;
-    /*border-image: linear-gradient(#E7622F, #ED872D, #6B6361, #3E4A61, #1A2639, #1A2639)1;*/
     border-width: 3px;
     border-style: solid;
     border-radius: 5px 5px 5px 5px;
@@ -99,14 +75,9 @@
     color: #fff;
 }
 
-.card-body {
-    /*padding: 3px;*/
-}
-
 .card-info {
     margin-bottom: 0;
 }
-
 
 .card-img-top {
     height: auto;
@@ -121,12 +92,10 @@
     font-family: Futura ;
 }
 
-
 .btn-primary {
     margin: 0 auto;
     background-color: #d32f2f;
     border-color: #d32f2f;
-    /*color: #fbc02d;*/
     font-size: 1.2rem;
     padding: 0.5rem 1rem;
 }
@@ -137,16 +106,11 @@
     color: #d32f2f;
 }
 
-
-
-
 /*MODAL CSS*/
 .modal-content {
     background-color: #1a1a1a;
     color: #fff;
 }
-
-
 
 .modal-header {
     border-bottom: none;
@@ -186,7 +150,6 @@
     color: wheat;
 }
 
-
 .modal-footer button {
     background-color: #fbc02d;
     border-color: #fbc02d;
@@ -199,24 +162,18 @@
     color: #1a1a1a;
 }
 
-
-
-
 .btn-close {
     background-color: white !important;
 }
 
-
 body{
     background: #E7622F;
-    /*background: linear-gradient(#E7622F, #ED872D, #6B6361, #3E4A61, #1A2639, #1A2639);*/
     background: linear-gradient(#a3a8b0, #8d939c, #767d88, #5f6774, #485161, #313c4d, #1a2639, #172233, #151e2e);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
     height: 100%;
     width: 100%;
-    /*background-attachment: fixed;*/
 }
 
 .bg-white{
