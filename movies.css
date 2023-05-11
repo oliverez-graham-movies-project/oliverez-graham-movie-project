@@ -203,3 +203,11 @@ body{
     color: white;
     text-decoration: none;
 }
+
+#icon {
+    line-height: 30px;
+}
+#icon {
+    vertical-align: middle;
+    font-size: 18px;
+}
