@@ -70,9 +70,6 @@
         try {
             const array = await arr
             let markup = ''
-            // console.log(array)
-            // const testArr = [...array]
-            // console.log(testArr)
             const newArr = array.map(async movie => {
                 const movieTitle = movie.title
                 const movieDB = await fetchDBTitle(movieTitle)
@@ -207,12 +204,12 @@
             const results = await fetch(movieUrl)
             const json = await results.json()
             // FILTER IT BASED ON OUR BUTTON ID TO GET CHOSEN MOVIE DATA
-            const [filteredMovie] = json.filter((movie) => {
+            const [currentMovie] = json.filter((movie) => {
                 return movie.id == id
             })
             // USED filteredMovie DATA TO POPULATE EDIT MODAL
-            $('#edit-movie-title').val(filteredMovie.title)
-            $('#edit-movie-rating').val(filteredMovie.rating)
+            $('#edit-movie-title').val(currentMovie.title)
+            $('#edit-movie-rating').val(currentMovie.rating)
             // HOIST UPDATED ID TO USE IN editModalSubmit
             movieId = id
             // CLICK INVISIBLE MODAL BUTTON TO SHOW MODAL
