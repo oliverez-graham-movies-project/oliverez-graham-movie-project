@@ -29,8 +29,27 @@
     font-family: "zapfino";
     font-size: 1.5rem;
     color: wheat;
-
+    padding-top: 20px;
 }
+
+/*.fa-brands.fa-redhat{*/
+/*    color: white;*/
+/*    position: absolute;*/
+/*    top: 15px;*/
+/*    left: 180px;*/
+/*    color: wheat;*/
+/*    transform: rotate(30deg);*/
+/*}*/
+.fa-brands.fa-redhat{
+    color: wheat;
+    position: absolute;
+    top: 17px;
+    left: 15px;
+    transform: rotateY(180deg) rotateZ(5deg);
+}
+
+
+
 .nav-link {
     color: wheat !important;
 }
