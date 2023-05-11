@@ -50,7 +50,7 @@
                 <p class="genre text-center"><span class="badge rounded-pill bg-white">${movieDB.Genre}</span></p>
                 <img src="${movieDB.Poster}" class="card-img-top" alt="${movieDB.Title}">
                 <div class="card-body">
-                <p class="rating d-flex justify-content-center"><i class="fa-sharp fa-solid fa-star"></i> Rating: ${movie.rating}/10</p>
+                <p class="rating d-flex justify-content-center"><i id='icon' class="fa-sharp fa-solid fa-star"></i> &nbsp; Rating: ${movie.rating}/10</p>
                 <hr>
                     <p class="director">Director: ${movieDB.Director}</p>
                     <hr>
