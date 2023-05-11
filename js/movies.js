@@ -136,8 +136,8 @@
 
     // CREATE OBJECT WITH INPUT, THEN PASS IT INTO postMovie()
     $('.addBtn').on('click', () => {
-        const title = $('#movie-title').val()
-        const rating = $('#movie-rating').val()
+        const title = $('#movie-title').val().toLowerCase()
+        const rating = $('#movie-rating').val().toLowerCase()
         const movieObj = {title, rating}
         postMovie(movieObj)
         // CLEARS THE INPUT FIELD
@@ -251,8 +251,9 @@
         const movieArray = await fetchHandler()
         hideLoading()
         const filteredMovies = movieArray.filter(movie => {
-            return movie.title.includes(input)
+            return movie.title.includes(input.toLowerCase())
         })
+        console.log(filteredMovies)
         // console.log(filteredMovies)
         fetchAndCreateCards(filteredMovies)
 
