@@ -233,10 +233,22 @@ body{
     border-color: #485161;
 }
 
+.deleteBtn:hover{
+    background-color: wheat !important;
+    color: #1A2639 !important;
+    border-color: #485161 !important;
+}
+
 .editBtn{
     background-color: rgba(0,0,0,.5);
     color: #fff;
     border-color: #485161;
+}
+
+.editBtn:hover{
+    background-color: wheat !important;
+    color: #1A2639 !important;
+    border-color: #485161 !important;
 }
 
 .dropdown-toggle{

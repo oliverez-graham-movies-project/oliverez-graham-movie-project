@@ -98,8 +98,8 @@
                         </div>
                     </div>
                     <div class="">
-                    <button type="button" class="btn btn-primary deleteBtn mt-2" id="delete-${movie.id}">Delete</button>
-                     <button class="btn btn-primary editBtn mt-2" id="patch-${movie.id}">Edit</button>
+                    <button type="button" class="btn deleteBtn mt-2" id="delete-${movie.id}">Delete</button>
+                     <button type="button" class="btn editBtn mt-2" id="patch-${movie.id}">Edit</button>
                     </div>
                      
                 </div>
